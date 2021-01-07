@@ -29,14 +29,14 @@ stop_list = readtext.split('\n')
 texts = [[word for word in line.lower().split() if word not in stop_list] for line in tdt2_data] 
 t_data = texts[:clip]
 
-save_p = "BoST_EXP" + str(clip)+"_" +str(c_len)+"_"+str(palpha)+"_"+str(pbeta)+"_"+str(pgamma)+"\\"
+save_p = "HCT_EXP" + str(clip)+"_" +str(c_len)+"_"+str(palpha)+"_"+str(pbeta)+"_"+str(pgamma)+"\\"
 # RUN C-LDA
 bost.run(t_data, start, end, iteration_num, save_p, clip, c_len, palpha, pbeta, pgamma)
 
 dataset = save_p
-y1 = np.load(str(dataset) +"BoST_per_list"+ str(topics) +".npy")
+y1 = np.load(str(dataset) +"HCT_per_list"+ str(topics) +".npy")
 x = np.linspace(0, iteration_num, iteration_num+1)
-plt.plot(x[::1], y1[:], "r*-", label='BoST_', linewidth=1)
+plt.plot(x[::1], y1[:], "r*-", label='HCT_', linewidth=1)
 plt.title("Convergence Test By Perplexities")
 plt.ylabel(u"Perplexities")
 plt.xlabel(u"Iterations") 
@@ -49,7 +49,7 @@ t_LDA.run(t_data, start, end, iteration_num, save_p2, clip, c_len, palpha, pbeta
 dataset = save_p2
 y2 = np.load(str(dataset) +"LDAper_list"+ str(topics) +".npy")
 x = np.linspace(0, iteration_num, iteration_num +1)
-plt.plot(x[::1], y1[:], "r*-", label='BoST', linewidth=1)
+plt.plot(x[::1], y1[:], "r*-", label='HCT', linewidth=1)
 plt.plot(x[::1], y2[:], "b+-", label='LDA', linewidth=1)
 plt.title("Convergence Test By Perplexities")
 plt.ylabel(u"Perplexities")
