@@ -31,7 +31,7 @@ t_data = texts[:clip]
 
 save_p = "HCT_EXP" + str(clip)+"_" +str(c_len)+"_"+str(palpha)+"_"+str(pbeta)+"_"+str(pgamma)+"\\"
 # RUN C-LDA
-bost.run(t_data, start, end, iteration_num, save_p, clip, c_len, palpha, pbeta, pgamma)
+bost.run(t_data, start, end, iteration_num, save_p, clip, c_len, palpha, pbeta)
 
 dataset = save_p
 y1 = np.load(str(dataset) +"HCT_per_list"+ str(topics) +".npy")
